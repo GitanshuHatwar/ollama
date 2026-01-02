@@ -5,10 +5,11 @@ import os
 import pandas as pd
 
 
-df = pd.read_csv("scheme.csv")
+csv_path = os.path.join(os.path.dirname(__file__), "scheme.csv")
+df = pd.read_csv(csv_path)
 embeddings = OllamaEmbeddings(model ="mxbai-embed-large")
 
-db_location = "./chrome_langchain_db"
+db_location = os.path.join(os.path.dirname(__file__), "chrome_langchain_db")
 add_documents = not os.path.exists(db_location)
 
 if add_documents:
